@@ -1,0 +1,66 @@
+include("window.tis");
+
+namespace search {
+
+    var clearingQueue = false;
+    var resultQueue = [];
+
+    function installSearchFeature() {
+        var input = self.select("input");
+        var sendDataFunc = function() {
+            self.timer(0ms, sendDataFunc);           
+            stdout.println("Received", input.value); 
+            stdout.println("Sending...");            
+            sendData(input.value);                   
+        }
+        input.onValueChanged = function() {
+            if (input.value == "") {
+                return;
+            }
+            self.timer(200ms, sendDataFunc);
+        };
+    }
+
+    function sendData(data) {
+        view.query(data);
+    }
+
+    function addToQueue(data) {
+        if (clearingQueue) {
+            return;
+        }
+        stdout.println("Pushing value:", data);
+        resultQueue.push(data);
+        displayData();
+        window.resizeAfterSearch();
+    }
+
+    function displayData() {
+        var searchResultList = self.select("ul");
+        searchResultList.style.set {             
+            max-height: window.SEARCH_RESULT_HEIGHT;    
+        }                                        
+        while (resultQueue.length != 0) {        
+           if (clearingQueue) {                 
+              break;                           
+           }                                    
+           var term = resultQueue.shift();      
+           var liElement = new Element("li");   
+           searchResultList.append(liElement);  
+           liElement.content(term);             
+        }                                        
+    }
+
+    function clearQueueAndSearchResult() {
+        clearingQueue = true;                    
+        resultQueue = [];                        
+        var searchResultList = self.select("ul");
+        searchResultList.detach();               
+        var body = self.select("body");          
+        var ul = new Element("ul");              
+        body.append(ul);                         
+        clearingQueue = false;                   
+        stdout.println("Cleared!");              
+    }
+
+}
