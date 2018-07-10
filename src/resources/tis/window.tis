@@ -14,5 +14,15 @@ namespace window {
     
         view.move(topLeftX, topLeftY, APP_WIDTH, BEFORE_SEARCH_HEIGHT, true);
     }
+
+    function resizeAfterSearch() {
+        var body = self.select("body");
+        body.style.set {
+            max-height: AFTER_SEARCH_HEIGHT
+        };
+
+        var (windowXCor, windowYCor, windowWidth, windowHeight) = view.box(#rect, #border, #screen);
+        view.move(windowXCor, windowYCor, APP_WIDTH, AFTER_SEARCH_HEIGHT, true);
+    }
     
 }
