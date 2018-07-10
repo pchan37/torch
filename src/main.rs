@@ -2,16 +2,27 @@
 extern crate sciter;
 
 mod load_handler;
+mod searcher;
 
-struct EventHandler; 
+use std::sync::mpsc;
+
+struct EventHandler {
+    sender: mpsc::Sender<String>,
+} 
 
 impl EventHandler {
+
+    fn query(&self, search_term: String) -> bool {
+        let _ = self.sender.send(search_term);
+        true
+    }
 
 }
 
 impl sciter::EventHandler for EventHandler {
 
     dispatch_script_call! {
+        fn query(String);
     }
 
 }
@@ -29,6 +40,13 @@ fn main() {
     frame.sciter_handler(handler);
     frame.load_file("this://app/html/index.htm");
 
-    frame.event_handler(EventHandler);
-    frame.run_app();
+    let (sender, receiver) = mpsc::channel();
+    let event_handler = EventHandler {
+        sender: sender,
+    };
+
+    searcher::spawn_search_thread(receiver, sciter::Element::from_window(frame.get_hwnd()).unwrap());
+
+    frame.event_handler(event_handler);
+                                 frame.run_app();
 }
