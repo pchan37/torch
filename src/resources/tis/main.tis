@@ -1,5 +1,7 @@
+include("search.tis");
 include("window.tis");
 
 function self.ready() {
     window.center();
+    search.installSearchFeature();
 }
