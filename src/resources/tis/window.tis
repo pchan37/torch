@@ -18,11 +18,20 @@ namespace window {
     function resizeAfterSearch() {
         var body = self.select("body");
         body.style.set {
-            max-height: AFTER_SEARCH_HEIGHT
+            max-height: px(AFTER_SEARCH_HEIGHT)
         };
 
         var (windowXCor, windowYCor, windowWidth, windowHeight) = view.box(#rect, #border, #screen);
         view.move(windowXCor, windowYCor, APP_WIDTH, AFTER_SEARCH_HEIGHT, true);
     }
     
+    function resizeAfterClear() {
+        var body = self.select("body");
+        body.style.set {
+            max-height: px(BEFORE_SEARCH_HEIGHT)
+        };
+
+        var (windowXCor, windowYCor, windowWidth, windowHeight) = view.box(#rect, #border, #screen);
+        view.move(windowXCor, windowYCor, APP_WIDTH, BEFORE_SEARCH_HEIGHT, true);
+    }
 }
