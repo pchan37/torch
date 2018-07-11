@@ -2,6 +2,7 @@
 extern crate sciter;
 
 mod load_handler;
+mod search;
 mod searcher;
 
 use std::sync::mpsc;
@@ -45,8 +46,8 @@ fn main() {
         sender: sender,
     };
 
-    searcher::spawn_search_thread(receiver, sciter::Element::from_window(frame.get_hwnd()).unwrap());
+    search::spawn_search_thread(receiver, sciter::Element::from_window(frame.get_hwnd()).unwrap());
 
     frame.event_handler(event_handler);
-                                 frame.run_app();
+    frame.run_app();
 }
