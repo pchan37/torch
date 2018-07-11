@@ -5,7 +5,7 @@ namespace window {
     var APP_WIDTH = screenWidth / 2;
     var BEFORE_SEARCH_HEIGHT = screenHeight / 15;
     var AFTER_SEARCH_HEIGHT = screenHeight / 3;
-    var SEARCH_RESULT_HEIGHT = screenHeight / 4;
+    var SEARCH_RESULT_HEIGHT = px(screenHeight / 4);
     
     function center() {
         var (_screenXCor, _screenYCor, screenWidth, screenHeight) = view.screenBox(#workarea);
