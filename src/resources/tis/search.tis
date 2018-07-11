@@ -14,9 +14,6 @@ namespace search {
             sendData(input.value);                   
         }
         input.onValueChanged = function() {
-            if (input.value == "") {
-                return;
-            }
             self.timer(200ms, sendDataFunc);
         };
     }
