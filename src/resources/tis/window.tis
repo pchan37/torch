@@ -18,7 +18,7 @@ namespace window {
     function resizeAfterSearch() {
         var body = self.select("body");
         body.style.set {
-            max-height: px(AFTER_SEARCH_HEIGHT)
+            max-height: px(AFTER_SEARCH_HEIGHT);
         };
 
         var (windowXCor, windowYCor, windowWidth, windowHeight) = view.box(#rect, #border, #screen);
@@ -28,7 +28,7 @@ namespace window {
     function resizeAfterClear() {
         var body = self.select("body");
         body.style.set {
-            max-height: px(BEFORE_SEARCH_HEIGHT)
+            max-height: px(BEFORE_SEARCH_HEIGHT);
         };
 
         var (windowXCor, windowYCor, windowWidth, windowHeight) = view.box(#rect, #border, #screen);
