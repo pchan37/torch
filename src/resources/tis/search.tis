@@ -57,6 +57,7 @@ namespace search {
         var ul = new Element("ul");              
         body.append(ul);                         
         clearingQueue = false;                   
+        window.resizeAfterClear();
         stdout.println("Cleared!");              
     }
 
