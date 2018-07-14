@@ -1,7 +1,16 @@
+include("candidates.tis");
 include("search.tis");
 include("window.tis");
 
 function self.ready() {
     window.center();
     search.installSearchFeature();
+    self.on("keyup", function(event) {
+        if (event.keyCode == Event.VK_DOWN) {
+            candidates.colorNext();
+        }
+        if (event.keyCode == Event.VK_UP) {
+            candidates.colorPrev();
+        }
+    });
 }

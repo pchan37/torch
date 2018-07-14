@@ -1,0 +1,62 @@
+namespace candidates {
+
+    var index = 0;
+
+    function resetColor() {
+        if (self.select("ul").length > index) {
+            uncolor(index);
+        }
+        index = 0;
+        color(index);
+    }
+
+    function colorNext() {
+        uncolor(index);
+        index += 1;
+        if (index >= self.select("ul").length) {
+            index = 0;
+        }
+        color(index); 
+        scrollCurrentCandidateIntoView();
+    }
+
+    function colorPrev() {
+        uncolor(index);
+        index -= 1;
+        if (index < 0) {
+            index = self.select("ul").length - 1;
+        }
+        color(index);
+        scrollCurrentCandidateIntoView();
+    }
+
+    function scrollCurrentCandidateIntoView() {
+        var ul = self.select("ul");
+        var (_candidateLeft, candidateTop, _candidateRight, candidateBottom) = ul[index].box(#rect, #inner, #view);
+        var (_ulLeft, ulTop, _ulRight, _ulBottom) = ul.box(#rect, #inner, #view);
+        if (candidateTop < ulTop || candidateBottom > view.box(#height)) {
+            ul[index].scrollToView();
+        }
+    }
+
+    function getCurrent() {
+        return ul[index];
+    }
+
+    function color(index) {
+        var ul = self.select("ul");
+        ul[index].style.set {
+            background-color: "lightblue";
+            color: "black";
+        }
+    }
+
+    function uncolor(index) {
+        var ul = self.select("ul");
+        ul[index].style.set {
+            background-color: "white";
+            color: "black";
+        }
+    }
+
+}
