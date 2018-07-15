@@ -1,9 +1,9 @@
+extern crate plugins;
 #[macro_use]
 extern crate sciter;
 
 mod load_handler;
-mod search;
-mod searcher;
+mod spawner;
 
 use std::sync::mpsc;
 
@@ -46,7 +46,7 @@ fn main() {
         sender: sender,
     };
 
-    search::spawn_search_thread(receiver, sciter::Element::from_window(frame.get_hwnd()).unwrap());
+    spawner::spawn_plugin_thread(receiver, sciter::Element::from_window(frame.get_hwnd()).unwrap());
 
     frame.event_handler(event_handler);
     frame.run_app();
