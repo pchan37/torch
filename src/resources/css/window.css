@@ -26,7 +26,7 @@ ul {
 }
 
 li {
-    font-size: 5vw;
+    font-size: 3vw;
     margin: 0% 0%;
     padding: 0px;
 }
@@ -46,6 +46,7 @@ input {
     font-size: 5vw;
     margin: 0% 0%;
     padding: 0px;
+    vertical-align: middle;
 }
 
 input[type='text']:empty {
