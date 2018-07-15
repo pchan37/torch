@@ -26,14 +26,14 @@ ul {
 }
 
 li {
-    font-size: 6vw;
+    font-size: 5vw;
     margin: 0% 0%;
     padding: 0px;
 }
 
 img {
     float: left;
-    height: 8vw;
+    height: 7vw;
     margin: 0% 0%;
     padding: 0px;
     width: 8vw;
@@ -43,7 +43,7 @@ img {
 input {
     border: none;
     float: left;
-    font-size: 6vw;
+    font-size: 5vw;
     margin: 0% 0%;
     padding: 0px;
 }
