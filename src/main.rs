@@ -21,6 +21,9 @@ impl EventHandler {
     }
 
     fn execute_secondary_action(&self, search_term: String, candidate: String) -> bool {
+        if let Some(plugin) = plugins::get_plugin(search_term.clone()) {
+            return plugin.execute_secondary_action(candidate);
+        }
         false
     }
 
