@@ -3,8 +3,8 @@ use sciter;
 use std::{thread, time};
 use std::sync::mpsc;
 
+use plugins;
 use plugins::Plugin;
-use plugins::wordlist_plugin::WordlistPlugin;
 
 pub fn spawn_plugin_thread(receiver: mpsc::Receiver<String>, root: sciter::Element) {
     thread::spawn(move || {
@@ -17,9 +17,10 @@ pub fn spawn_plugin_thread(receiver: mpsc::Receiver<String>, root: sciter::Eleme
                     let (search_sender_clone, search_receiver_clone) = mpsc::channel();
                     _search_sender = search_sender_clone;
                     search_receiver = search_receiver_clone;
+
                     let _ = root.call_function("search.clearQueueAndSearchResult", &make_args!());
-                    if search_term != "" {
-                        spawn_plugin_worker(search_term, _search_sender);
+                    if let Some(plugin) = plugins::get_plugin(search_term.clone()) {
+                    spawn_plugin_worker(plugin, search_term.clone(), _search_sender);
                         still_receiving = true;
                         is_first_take = true;
                     }
@@ -37,9 +38,9 @@ pub fn spawn_plugin_thread(receiver: mpsc::Receiver<String>, root: sciter::Eleme
     });
 }
 
-fn spawn_plugin_worker(search_term: String, sender: mpsc::Sender<String>) {
+fn spawn_plugin_worker(plugin: Box<Plugin + Send>, search_term: String, sender: mpsc::Sender<String>) {
     thread::spawn(move || {
-        let results = WordlistPlugin::get_search_result(search_term.clone());
+        let results = plugin.get_search_result(search_term);
         match results {
             Ok(search_results) => {
                 for candidate in &search_results {
