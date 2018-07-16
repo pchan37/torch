@@ -40,6 +40,7 @@ namespace candidates {
     }
 
     function getCurrent() {
+        var ul = self.select("ul");
         return ul[index];
     }
 
