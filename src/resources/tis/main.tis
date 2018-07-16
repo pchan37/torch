@@ -12,5 +12,9 @@ function self.ready() {
         if (event.keyCode == Event.VK_UP) {
             candidates.colorPrev();
         }
+        if (event.keyCode == Event.VK_RETURN) {
+            var input = self.select("input");
+            view.execute_primary_action(input.value, candidates.getCurrent().value);
+        }
     });
 }
