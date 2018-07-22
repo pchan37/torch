@@ -1,0 +1,10 @@
+namespace settings {
+
+   function installSettingsFeature() {
+       var gearIcon = self.select(".gear-icon");
+       gearIcon.on("click", function() {
+           view.show_settings_window();
+       });
+   }
+
+}

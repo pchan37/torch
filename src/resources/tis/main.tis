@@ -1,10 +1,12 @@
 include("candidates.tis");
 include("search.tis");
+include("settings.tis");
 include("window.tis");
 
 function self.ready() {
     window.center();
     search.installSearchFeature();
+    settings.installSettingsFeature();
     self.on("keyup", function(event) {
         if (event.keyCode == Event.VK_DOWN) {
             candidates.colorNext();
