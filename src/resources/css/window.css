@@ -32,21 +32,33 @@ li {
 }
 
 img {
-    float: left;
     height: 7vw;
-    margin: 0% 0%;
+    margin: 1% 0%;
     padding: 0px;
     width: 8vw;
     vertical-align: middle;
 }
 
+img.search-icon {
+    float: left;
+}
+
+img.gear-icon {
+    height: 3vw;
+    float: right;
+    margin: 3% 0%;
+    width: 4vw;
+}
+
+img.gear-icon:hover {
+    cursor: pointer;
+}
+
 input {
     border: none;
-    float: left;
     font-size: 5vw;
-    margin: 0% 0%;
+    margin: 1% 0%;
     padding: 0px;
-    vertical-align: middle;
 }
 
 input[type='text']:empty {
