@@ -287,7 +287,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "plugins"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/plugins.git#ebb1c734f082040285c2389030d5dcb6eb98f0c5"
+source = "git+https://github.com/torch-rs/plugins.git#ab318e1a8fb80412a4cd361ff9b5f62d8d91ab40"
 dependencies = [
  "Inflector 0.11.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "dirs 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -306,8 +306,9 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "raise_window"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/raise_window#650bd89919bd65607dac3217b4d417d2b89a5516"
+source = "git+https://github.com/torch-rs/raise_window#c9a99e7c5360da457b32d0d12be489ff13d601ab"
 dependencies = [
+ "byteorder 1.2.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "encoding 0.2.33 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "lazy_static 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -398,9 +399,10 @@ dependencies = [
 [[package]]
 name = "searchers"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/searchers#a2ec004c81dd73ff2eeca0f4726d992c435c8773"
+source = "git+https://github.com/torch-rs/searchers#cc587e2bca337a097e29bc6db3b06851caa7c298"
 dependencies = [
  "dirs 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "raise_window 0.1.0 (git+https://github.com/torch-rs/raise_window)",
  "walkdir 2.1.4 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
