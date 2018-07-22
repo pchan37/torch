@@ -32,6 +32,11 @@ impl EventHandler {
         true
     }
 
+    fn show_settings_window(&self) -> bool {
+        println!("Showing settings window");
+        true
+    }
+
 }
 
 impl sciter::EventHandler for EventHandler {
@@ -40,6 +45,7 @@ impl sciter::EventHandler for EventHandler {
         fn execute_primary_action(String, String);
         fn execute_secondary_action(String, String);
         fn query(String);
+        fn show_settings_window();
     }
 
 }
