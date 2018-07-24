@@ -3,20 +3,74 @@ include("search.tis");
 include("settings.tis");
 include("window.tis");
 
+
+function setKeycodes() {
+    var keycodes = {};
+    for (var (name, code) in Event) {
+        if (name.toString() like "VK_*") {
+            keycodes[code] = name.toString()[3..];
+        }
+    }
+    return keycodes;
+}
+
+var keycodes = setKeycodes();
+
+function getKeyPressSignature(event) {
+    var value = "";
+    var isMacOS = view.get_os() == "Mac OS";
+    if (event.ctrlKey) {
+        value += "Ctrl + ";
+    }
+    if (event.altKey) {
+        value += "Alt + ";
+    }
+    if (event.shiftKey) {
+        value += "Shift + ";
+    }
+    if (isMacOS && event.commandKey) {
+        value += "CMD + ";
+    }
+    if (!isMacOS && event.commandKey) {
+        value += "WIN + ";
+    }
+    if (event.keyCode != event.VK_CONTROL) {
+        value += keycodes[event.keyCode] + " + "; 
+    }
+    return value;
+}
+
+function executeActionGivenName(name) {
+    var input = self.select("input");
+    switch (name) {
+        case "show-window":
+            break;
+        case "hide-window":
+            break;
+        case "previous-option":
+            candidates.colorPrev();
+            break;
+        case "next-option":
+            candidates.colorNext();
+            break;
+        case "execute-primary-action":
+            view.execute_primary_action(input.value, candidates.getCurrent().value);
+            break;
+        case "execute-secondary-action":
+            view.execute_secondary_action(input.value, candidates.getCurrent().value);
+            break;
+        default:
+            break;
+    };
+}
+
 function self.ready() {
     window.center();
     search.installSearchFeature();
     settings.installSettingsFeature();
-    self.on("keyup", function(event) {
-        if (event.keyCode == Event.VK_DOWN) {
-            candidates.colorNext();
-        }
-        if (event.keyCode == Event.VK_UP) {
-            candidates.colorPrev();
-        }
-        if (event.keyCode == Event.VK_RETURN) {
-            var input = self.select("input");
-            view.execute_primary_action(input.value, candidates.getCurrent().value);
-        }
-    });
+    self.on("keydown", function(event) {
+        var value = getKeyPressSignature(event);
+        var actionName = view.get_action_from_keybindings(value[..value.length-3]);
+        executeActionGivenName(actionName);
+   });
 }
