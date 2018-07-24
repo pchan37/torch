@@ -5,4 +5,5 @@ authors = ["Patrick Chan <patrickchan1999@gmail.com>"]
 
 [dependencies]
 plugins = { git = "https://github.com/torch-rs/plugins.git" }
+settings = { git = "https://github.com/torch-rs/settings" }
 sciter-rs = "*"
