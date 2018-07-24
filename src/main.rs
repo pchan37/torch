@@ -1,3 +1,4 @@
+extern crate config;
 extern crate plugins;
 #[macro_use]
 extern crate sciter;
@@ -6,6 +7,8 @@ extern crate settings;
 mod load_handler;
 mod spawner;
 
+use config::Config;
+use config::keybindings_config;
 use std::sync::mpsc;
 
 struct EventHandler {
@@ -28,6 +31,26 @@ impl EventHandler {
         false
     }
 
+    fn get_action_from_keybindings(&self, signature: String) -> String {
+        let config = keybindings_config::KeybindingsConfig::new(String::from("keybindings.yaml"));
+        match config.get_key_from_value(signature.clone()) {
+            Some(value) => value,
+            None => String::new(),
+        }
+    }
+
+    fn get_os(&self) -> String {
+        if cfg!(target_os = "linux") {
+            return String::from("linux");
+        } else if cfg!(target_os = "macos") {
+            return String::from("Mac OS");
+        } else if cfg!(target_os = "windows") {
+            return String::from("Windows");
+        } else {
+            return String::from("Unknown");
+        }
+    }
+
     fn query(&self, search_term: String) -> bool {
         let _ = self.sender.send(search_term);
         true
@@ -44,6 +67,8 @@ impl sciter::EventHandler for EventHandler {
     dispatch_script_call! {
         fn execute_primary_action(String, String);
         fn execute_secondary_action(String, String);
+        fn get_action_from_keybindings(String);
+        fn get_os();
         fn query(String);
         fn show_settings_window();
     }
