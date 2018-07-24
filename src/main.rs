@@ -1,6 +1,7 @@
 extern crate plugins;
 #[macro_use]
 extern crate sciter;
+extern crate settings;
 
 mod load_handler;
 mod spawner;
@@ -33,8 +34,7 @@ impl EventHandler {
     }
 
     fn show_settings_window(&self) -> bool {
-        println!("Showing settings window");
-        true
+        settings::show()
     }
 
 }
