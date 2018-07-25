@@ -46,6 +46,7 @@ function executeActionGivenName(name) {
         case "show-window":
             break;
         case "hide-window":
+            view.state = view.WINDOW_HIDDEN;
             break;
         case "previous-option":
             candidates.colorPrev();
