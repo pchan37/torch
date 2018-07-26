@@ -64,7 +64,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "config"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/config.git#0751004b774ed6cf7e60b957ed414e3f689af989"
+source = "git+https://github.com/torch-rs/config.git#d0a2e2bbdb0d7cb4a0c39cb89b95be61898102c0"
 dependencies = [
  "fs2 0.4.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.70 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -457,7 +457,7 @@ dependencies = [
 [[package]]
 name = "settings"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/settings#86b954299a7d497790ff895a8e128700f6bd0f25"
+source = "git+https://github.com/torch-rs/settings#94dd94e7650e8ce5b983feeb6b0602e1dca669b8"
 dependencies = [
  "config 0.1.0 (git+https://github.com/torch-rs/config.git)",
  "sciter-rs 0.5.43 (registry+https://github.com/rust-lang/crates.io-index)",
