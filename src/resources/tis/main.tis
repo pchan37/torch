@@ -43,10 +43,8 @@ function getKeyPressSignature(event) {
 function executeActionGivenName(name) {
     var input = self.select("input");
     switch (name) {
-        case "show-window":
-            break;
-        case "hide-window":
-            view.state = view.WINDOW_HIDDEN;
+        case "close-window":
+            view.close();
             break;
         case "previous-option":
             candidates.colorPrev();
@@ -56,9 +54,11 @@ function executeActionGivenName(name) {
             break;
         case "execute-primary-action":
             view.execute_primary_action(input.value, candidates.getCurrent().value);
+            view.close();
             break;
         case "execute-secondary-action":
             view.execute_secondary_action(input.value, candidates.getCurrent().value);
+            view.close();
             break;
         default:
             break;
