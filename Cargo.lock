@@ -307,7 +307,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "plugins"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/plugins.git#ab318e1a8fb80412a4cd361ff9b5f62d8d91ab40"
+source = "git+https://github.com/torch-rs/plugins.git#9890d42e34f3c85e6dad6eae32e060523cbf9a9c"
 dependencies = [
  "Inflector 0.11.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "dirs 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
