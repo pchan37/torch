@@ -27,7 +27,7 @@ namespace search {
             return;
         }
         stdout.println("Pushing value:", displayText);
-        resultQueue.push(displayText);
+        resultQueue.push([searchedText, displayText, iconPath]);
         displayData();
         window.resizeAfterSearch();
     }
@@ -41,10 +41,11 @@ namespace search {
            if (clearingQueue) {                 
               break;                           
            }                                    
-           var term = resultQueue.shift();      
+           var searchTermAndMetaData = resultQueue.shift();      
            var liElement = new Element("li");   
            searchResultList.append(liElement);  
-           liElement.content(term);             
+           liElement.content(searchTermAndMetaData[1]);             
+           liElement.attributes["data-search-term"] = searchTermAndMetaData[0];
         }                                        
     }
 

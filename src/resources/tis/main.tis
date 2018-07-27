@@ -53,11 +53,11 @@ function executeActionGivenName(name) {
             candidates.colorNext();
             break;
         case "execute-primary-action":
-            view.execute_primary_action(input.value, candidates.getCurrent().value);
+            view.execute_primary_action(input.value, candidates.getCurrent().attributes["data-search-term"]);
             view.close();
             break;
         case "execute-secondary-action":
-            view.execute_secondary_action(input.value, candidates.getCurrent().value);
+            view.execute_secondary_action(input.value, candidates.getCurrent().attributes["data-search-term"]);
             view.close();
             break;
         default:
