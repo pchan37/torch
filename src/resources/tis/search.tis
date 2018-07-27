@@ -22,12 +22,12 @@ namespace search {
         view.query(data);
     }
 
-    function addToQueue(data) {
+    function addToQueue(searchedText, displayText, iconPath) {
         if (clearingQueue) {
             return;
         }
-        stdout.println("Pushing value:", data);
-        resultQueue.push(data);
+        stdout.println("Pushing value:", displayText);
+        resultQueue.push(displayText);
         displayData();
         window.resizeAfterSearch();
     }
