@@ -428,7 +428,7 @@ source = "git+https://github.com/torch-rs/search_candidate#8196f431046bd5cc92db7
 [[package]]
 name = "searchers"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/searchers#26dcf39a488f6f902206db1208fc7ba828708de9"
+source = "git+https://github.com/torch-rs/searchers#387d4e588e704b4321aba86c90c41b25f2458c9c"
 dependencies = [
  "Inflector 0.11.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "dirs 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
