@@ -164,7 +164,10 @@ dependencies = [
 [[package]]
 name = "filters"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/filters#55770fdda93c8376934b88c4250b844aef6486ce"
+source = "git+https://github.com/torch-rs/filters#c9266fec46fb679447426b99a82a27d5efcf7cd3"
+dependencies = [
+ "search_candidate 0.1.0 (git+https://github.com/torch-rs/search_candidate)",
+]
 
 [[package]]
 name = "fs2"
@@ -307,13 +310,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "plugins"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/plugins.git#9890d42e34f3c85e6dad6eae32e060523cbf9a9c"
+source = "git+https://github.com/torch-rs/plugins.git#0a3b5049e57d6a8a079bb0eba86c422767c8776b"
 dependencies = [
  "Inflector 0.11.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "dirs 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "filters 0.1.0 (git+https://github.com/torch-rs/filters)",
  "open 1.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "raise_window 0.1.0 (git+https://github.com/torch-rs/raise_window)",
+ "search_candidate 0.1.0 (git+https://github.com/torch-rs/search_candidate)",
  "searchers 0.1.0 (git+https://github.com/torch-rs/searchers)",
  "sorters 0.1.0 (git+https://github.com/torch-rs/sorters)",
 ]
@@ -417,12 +421,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "search_candidate"
+version = "0.1.0"
+source = "git+https://github.com/torch-rs/search_candidate#8196f431046bd5cc92db7b20609e8f4e106a90f9"
+
+[[package]]
 name = "searchers"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/searchers#cc587e2bca337a097e29bc6db3b06851caa7c298"
+source = "git+https://github.com/torch-rs/searchers#26dcf39a488f6f902206db1208fc7ba828708de9"
 dependencies = [
+ "Inflector 0.11.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "dirs 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "raise_window 0.1.0 (git+https://github.com/torch-rs/raise_window)",
+ "search_candidate 0.1.0 (git+https://github.com/torch-rs/search_candidate)",
  "walkdir 2.1.4 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -466,10 +477,11 @@ dependencies = [
 [[package]]
 name = "sorters"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/sorters#57760c9dde854d8cf5e09fe7df749854203761df"
+source = "git+https://github.com/torch-rs/sorters#2e85eedc95d4f1f466718ee7c49c30107d6e8e6b"
 dependencies = [
  "fs2 0.4.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex 0.2.11 (registry+https://github.com/rust-lang/crates.io-index)",
+ "search_candidate 0.1.0 (git+https://github.com/torch-rs/search_candidate)",
  "serde 1.0.70 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde-pickle 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -517,6 +529,7 @@ dependencies = [
  "config 0.1.0 (git+https://github.com/torch-rs/config.git)",
  "plugins 0.1.0 (git+https://github.com/torch-rs/plugins.git)",
  "sciter-rs 0.5.43 (registry+https://github.com/rust-lang/crates.io-index)",
+ "search_candidate 0.1.0 (git+https://github.com/torch-rs/search_candidate)",
  "settings 0.1.0 (git+https://github.com/torch-rs/settings)",
 ]
 
@@ -647,6 +660,7 @@ dependencies = [
 "checksum rustc-serialize 0.3.24 (registry+https://github.com/rust-lang/crates.io-index)" = "dcf128d1287d2ea9d80910b5f1120d0b8eede3fbf1abe91c40d39ea7d51e6fda"
 "checksum same-file 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "cfb6eded0b06a0b512c8ddbcf04089138c9b4362c2f696f3c3d76039d68f3637"
 "checksum sciter-rs 0.5.43 (registry+https://github.com/rust-lang/crates.io-index)" = "223f43aa3d846bd0fabdd56ed9dba2272625a6c3cbba7224c53de22ea7f42c92"
+"checksum search_candidate 0.1.0 (git+https://github.com/torch-rs/search_candidate)" = "<none>"
 "checksum searchers 0.1.0 (git+https://github.com/torch-rs/searchers)" = "<none>"
 "checksum serde 1.0.70 (registry+https://github.com/rust-lang/crates.io-index)" = "0c3adf19c07af6d186d91dae8927b83b0553d07ca56cbf7f2f32560455c91920"
 "checksum serde-pickle 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)" = "22cb84f7c13bcf3392be7b9fb58dbb2c8e65a656e4cd536a8bebaa96dfeed605"
