@@ -19,15 +19,15 @@ body {
 }
 
 ul {
-    margin: 0% 0%;
+    margin: 0% 2%;
     overflow: hidden;
     overflow-y: scroll;
     padding: 0px;
 }
 
 li {
-    font-size: 3vw;
-    margin: 0% 0%;
+    font-size: 4vw;
+    margin: 1% 0%;
     padding: 0px;
 }
 
