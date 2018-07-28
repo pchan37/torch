@@ -1,3 +1,4 @@
+include("lib.tis");
 include("window.tis");
 
 namespace search {
@@ -44,7 +45,14 @@ namespace search {
            var searchTermAndMetaData = resultQueue.shift();      
            var liElement = new Element("li");   
            searchResultList.append(liElement);  
-           liElement.content(searchTermAndMetaData[1]);             
+           if (searchTermAndMetaData[2] == "") {
+               liElement.append(getSpanElementWithIcon("resources/img/empty.png"));
+           } else if (searchTermAndMetaData[2].endsWith(".png") || searchTermAndMetaData[2].endsWith(".svg")) {
+               liElement.append(getSpanElementWithIcon(searchTermAndMetaData[2]));
+           } else {
+               liElement.append(getSpanElementWithIconClass(searchTermAndMetaData[2]));
+           }
+           liElement.html += lib.$html( { searchTermAndMetaData[1] });
            liElement.attributes["data-search-term"] = searchTermAndMetaData[0];
         }                                        
     }
@@ -60,6 +68,19 @@ namespace search {
         clearingQueue = false;                   
         window.resizeAfterClear();
         stdout.println("Cleared!");              
+    }
+
+    function getSpanElementWithIcon(iconPath) {
+        var spanElement = new Element("span");
+        spanElement.attributes["style"] = String.$(background-image: url("{ iconPath }"););
+        spanElement.attributes.addClass("fiv-viv");
+        return spanElement;
+    }
+
+    function getSpanElementWithIconClass(iconClass) {
+        var spanElement = new Element("span");
+        spanElement.attributes.addClass(iconClass);
+        return spanElement;
     }
 
 }
