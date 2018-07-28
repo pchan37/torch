@@ -1,0 +1,16 @@
+namespace lib {
+
+    function $html(params..) {
+        for( var (n,v) in params ) {
+            if( n & 1 ) { // each odd paramter is a value of expression inside '{' and '}'
+                params[n] = v.toHtmlString(); // calling method that will do HTML escaping 
+            }
+         }
+         return params.join(""); //return composed string
+    }
+    
+}
+
+function String.endsWith(tail) {
+    return this.indexOf(tail) == (this.length - tail.length);
+}
