@@ -7,7 +7,7 @@
 .fiv-size-lg{font-size:3.5em}
 .fiv-size-xl{font-size:4.75em}
 .fiv-viv{position:relative;display:inline-block;line-height:1em;width:.75em}
-.fiv-viv:before{content:'\00a0'}
+.fiv-viv::before{content:'\00a0'}
 .fiv-viv.fiv-icon-3g2{background-image:url("icons/vivid/3g2.svg")}
 .fiv-viv.fiv-icon-3ga{background-image:url("icons/vivid/3ga.svg")}
 .fiv-viv.fiv-icon-3gp{background-image:url("icons/vivid/3gp.svg")}
