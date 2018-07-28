@@ -428,10 +428,11 @@ source = "git+https://github.com/torch-rs/search_candidate#8196f431046bd5cc92db7
 [[package]]
 name = "searchers"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/searchers#387d4e588e704b4321aba86c90c41b25f2458c9c"
+source = "git+https://github.com/torch-rs/searchers#77911c6b70b51f3cebfef84248364d8f0c0b98fa"
 dependencies = [
  "Inflector 0.11.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "dirs 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "fs2 0.4.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "raise_window 0.1.0 (git+https://github.com/torch-rs/raise_window)",
  "search_candidate 0.1.0 (git+https://github.com/torch-rs/search_candidate)",
  "walkdir 2.1.4 (registry+https://github.com/rust-lang/crates.io-index)",
