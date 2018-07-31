@@ -26,14 +26,11 @@ ul {
 }
 
 li {
-    font-size: 4vw;
     margin: 1% 0%;
     padding: 0px;
 }
 
 img {
-    height: 7vw;
-    margin: 1% 0%;
     padding: 0px;
     width: 8vw;
     vertical-align: middle;
@@ -41,10 +38,10 @@ img {
 
 img.search-icon {
     float: left;
+    margin: 1% 0%;
 }
 
 img.gear-icon {
-    height: 3vw;
     float: right;
     margin: 3% 0%;
     width: 4vw;
@@ -56,7 +53,6 @@ img.gear-icon:hover {
 
 input {
     border: none;
-    font-size: 5vw;
     margin: 1% 0%;
     padding: 0px;
 }

@@ -5,7 +5,8 @@ namespace window {
     var APP_WIDTH = screenWidth / 2;
     var BEFORE_SEARCH_HEIGHT = screenHeight / 15;
     var AFTER_SEARCH_HEIGHT = screenHeight / 3;
-    var SEARCH_RESULT_HEIGHT = px(screenHeight / 4);
+    var SEARCH_RESULT_HEIGHT_INT = screenHeight / 4;
+    var SEARCH_RESULT_HEIGHT = px(SEARCH_RESULT_HEIGHT_INT);
     
     function center() {
         var (_screenXCor, _screenYCor, screenWidth, screenHeight) = view.screenBox(#workarea);
@@ -13,6 +14,16 @@ namespace window {
         var topLeftY = (screenHeight - BEFORE_SEARCH_HEIGHT) / 2; 
     
         view.move(topLeftX, topLeftY, APP_WIDTH, BEFORE_SEARCH_HEIGHT, true);
+        stdout.println(BEFORE_SEARCH_HEIGHT);
+        self.select("input").style.set {
+            font-size: String.$({ .98 * BEFORE_SEARCH_HEIGHT }vh);
+        }
+        self.select("img.search-icon").style.set {
+            height: String.$({ px(.75 * BEFORE_SEARCH_HEIGHT) }px); 
+        }
+        self.select("img.gear-icon").style.set {
+            height: String.$({ px(.30 * BEFORE_SEARCH_HEIGHT) }px); 
+        }
     }
 
     function resizeAfterSearch() {
@@ -23,6 +34,11 @@ namespace window {
 
         var (windowXCor, windowYCor, windowWidth, windowHeight) = view.box(#rect, #border, #screen);
         view.move(windowXCor, windowYCor, APP_WIDTH, AFTER_SEARCH_HEIGHT, true);
+        for (var li in self.selectAll("li")) {
+            li.style.set {
+                font-size: String.$({ .98 * SEARCH_RESULT_HEIGHT_INT / 20 }vh);
+            }
+        }
     }
     
     function resizeAfterClear() {
