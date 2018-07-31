@@ -23,7 +23,7 @@ pub fn spawn_plugin_thread(receiver: mpsc::Receiver<String>, root: sciter::Eleme
                     search_receiver = search_receiver_clone;
 
                     let _ = root.call_function("search.clearQueueAndSearchResult", &make_args!());
-                    if let Some(plugin) = plugins::get_plugin(search_term.clone()) {
+                    if let Some(plugin) = plugins::get_plugin(&search_term) {
                         spawn_plugin_worker(plugin, search_term.clone(), _search_sender);
                         still_receiving = true;
                         is_first_take = true;
@@ -44,7 +44,7 @@ pub fn spawn_plugin_thread(receiver: mpsc::Receiver<String>, root: sciter::Eleme
 
 fn spawn_plugin_worker(plugin: Box<Plugin + Send>, search_term: String, sender: mpsc::Sender<Vec<String>>) {
     thread::spawn(move || {
-        let results = plugin.get_search_result(search_term);
+        let results = plugin.get_search_result(&search_term);
         match results {
             Ok(search_results) => {
                 for candidate in &search_results {

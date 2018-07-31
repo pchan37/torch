@@ -18,22 +18,22 @@ struct EventHandler {
 impl EventHandler {
 
     fn execute_primary_action(&self, search_term: String, candidate: String) -> bool {
-        if let Some(plugin) = plugins::get_plugin(search_term.clone()) {
-            return plugin.execute_primary_action(candidate);
+        if let Some(plugin) = plugins::get_plugin(&search_term) {
+            return plugin.execute_primary_action(&candidate);
         }
         false
     }
 
     fn execute_secondary_action(&self, search_term: String, candidate: String) -> bool {
-        if let Some(plugin) = plugins::get_plugin(search_term.clone()) {
-            return plugin.execute_secondary_action(candidate);
+        if let Some(plugin) = plugins::get_plugin(&search_term) {
+            return plugin.execute_secondary_action(&candidate);
         }
         false
     }
 
     fn get_action_from_keybindings(&self, signature: String) -> String {
-        let config = keybindings_config::KeybindingsConfig::new(String::from("keybindings.yaml"));
-        match config.get_key_from_value(signature.clone()) {
+        let config = keybindings_config::KeybindingsConfig::new("keybindings.yaml").unwrap();
+        match config.get_key_from_value(&signature) {
             Some(value) => value,
             None => String::new(),
         }
