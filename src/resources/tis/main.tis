@@ -66,6 +66,7 @@ function executeActionGivenName(name) {
 }
 
 function self.ready() {
+    window.initializeGlobals();
     window.center();
     search.installSearchFeature();
     settings.installSettingsFeature();

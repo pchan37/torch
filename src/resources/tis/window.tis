@@ -2,19 +2,48 @@ namespace window {
 
     var (_, __, screenWidth, screenHeight) = view.screenBox(#workarea);
     
-    var APP_WIDTH = screenWidth / 2;
-    var BEFORE_SEARCH_HEIGHT = screenHeight / 15;
-    var AFTER_SEARCH_HEIGHT = screenHeight / 3;
-    var SEARCH_RESULT_HEIGHT_INT = screenHeight / 4;
-    var SEARCH_RESULT_HEIGHT = px(SEARCH_RESULT_HEIGHT_INT);
+    var APP_WIDTH;
+    var BEFORE_SEARCH_HEIGHT;
+    var AFTER_SEARCH_HEIGHT;
+    var SEARCH_RESULT_HEIGHT_INT;
+    var SEARCH_RESULT_HEIGHT;
+    var TOP_BOTTOM_MARGIN;
+    var LEFT_RIGHT_MARGIN;
+
+    function initializeGlobals() {
+        var (screenWidth, screenHeight) = view.screenBox(#workarea, #dimension);
+        if (screenHeight < screenWidth) {
+             var screenUnit = screenHeight / 3;
+             var adjustedScreenWidth = screenUnit * 4;
+
+             APP_WIDTH = adjustedScreenWidth / 2;
+             BEFORE_SEARCH_HEIGHT = screenHeight / 15;
+             AFTER_SEARCH_HEIGHT = screenHeight / 3;
+             SEARCH_RESULT_HEIGHT_INT = screenHeight / 4;
+             SEARCH_RESULT_HEIGHT = px(SEARCH_RESULT_HEIGHT_INT);
+             TOP_BOTTOM_MARGIN = 0;
+             LEFT_RIGHT_MARGIN = screenWidth - adjustedScreenWidth;
+        }
+        if (screenWidth <= screenHeight) {
+            var screenUnit = screenWidth / 4;
+            var adjustedScreenHeight = screenUnit * 3;
+
+            APP_WIDTH = screenWidth / 2;
+            BEFORE_SEARCH_HEIGHT = adjustedScreenHeight / 15;
+            AFTER_SEARCH_HEIGHT = adjustedScreenHeight / 3;
+            SEARCH_RESULT_HEIGHT_INT = adjustedScreenHeight / 4;
+            SEARCH_RESULT_HEIGHT = px(SEARCH_RESULT_HEIGHT_INT)
+            TOP_BOTTOM_MARGIN = screenHeight - adjustedScreenHeight;
+            LEFT_RIGHT_MARGIN = 0;
+        }
+    }
     
     function center() {
-        var (_screenXCor, _screenYCor, screenWidth, screenHeight) = view.screenBox(#workarea);
-        var topLeftX = (screenWidth - APP_WIDTH) / 2;
-        var topLeftY = (screenHeight - BEFORE_SEARCH_HEIGHT) / 2; 
+        var (screenWidth, screenHeight) = view.screenBox(#workarea, #dimension);
+        var topLeftX = (screenWidth - APP_WIDTH - LEFT_RIGHT_MARGIN) / 2;
+        var topLeftY = (screenHeight - BEFORE_SEARCH_HEIGHT - TOP_BOTTOM_MARGIN) / 2; 
     
         view.move(topLeftX, topLeftY, APP_WIDTH, BEFORE_SEARCH_HEIGHT, true);
-        stdout.println(BEFORE_SEARCH_HEIGHT);
         self.select("input").style.set {
             font-size: String.$({ .98 * BEFORE_SEARCH_HEIGHT }vh);
         }
