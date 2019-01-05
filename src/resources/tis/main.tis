@@ -70,7 +70,7 @@ function self.ready() {
     window.center();
     search.installSearchFeature();
     settings.installSettingsFeature();
-    self.on("keydown", function(event) {
+    self.on("keyup", function(event) {
         var value = getKeyPressSignature(event);
         var actionName = view.get_action_from_keybindings(value[..value.length-3]);
         executeActionGivenName(actionName);
