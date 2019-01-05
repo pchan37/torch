@@ -550,7 +550,7 @@ dependencies = [
 [[package]]
 name = "settings"
 version = "0.1.0"
-source = "git+https://github.com/torch-rs/settings#7fc53219cdb1ff4e51c6e114f817f4b771529f18"
+source = "git+https://github.com/torch-rs/settings#9521b0ab4d8fe546fc6fe704f1720ef1f25efe0a"
 dependencies = [
  "config 0.1.0 (git+https://github.com/torch-rs/config.git)",
  "sciter-rs 0.5.45 (registry+https://github.com/rust-lang/crates.io-index)",
