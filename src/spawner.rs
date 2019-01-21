@@ -9,6 +9,8 @@ use std::sync::mpsc;
 use plugins;
 use plugins::Plugin;
 
+use output::debug_println;
+
 pub fn spawn_plugin_thread(receiver: mpsc::Receiver<String>, root: sciter::Element) {
     thread::spawn(move || {
         let (mut _search_sender, mut search_receiver): (mpsc::Sender<Vec<String>>, mpsc::Receiver<Vec<String>>) =
@@ -77,7 +79,7 @@ fn send_candidates_to_queue(receiver: &mpsc::Receiver<Vec<String>>, root: &scite
             }
         }
         Err(mpsc::TryRecvError::Disconnected) => {
-            println!("Terminated!");
+            debug_println("Terminated");
             still_receiving = false;
         }
         Err(mpsc::TryRecvError::Empty) => {}

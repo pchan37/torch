@@ -5,6 +5,7 @@ extern crate sciter;
 extern crate settings;
 
 mod load_handler;
+mod output;
 mod spawner;
 
 use config::Config;

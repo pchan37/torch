@@ -1,3 +1,4 @@
+include("constants");
 include("lib.tis");
 include("window.tis");
 
@@ -10,8 +11,10 @@ namespace search {
         var input = self.select("input");
         var sendDataFunc = function() {
             self.timer(0ms, sendDataFunc);           
-            stdout.println("Received", input.value); 
-            stdout.println("Sending...");            
+            if (DEBUG) {
+               stdout.println("Received", input.value); 
+               stdout.println("Sending...");            
+            }
             sendData(input.value);                   
         }
         input.onValueChanged = function() {
@@ -27,7 +30,9 @@ namespace search {
         if (clearingQueue) {
             return;
         }
-        stdout.println("Pushing value:", displayText);
+        if (DEBUG) {
+           stdout.println("Pushing value:", displayText);
+        } 
         resultQueue.push([searchedText, displayText, iconPath]);
         displayData();
         window.resizeAfterSearch();
@@ -67,7 +72,9 @@ namespace search {
         body.append(ul);                         
         clearingQueue = false;                   
         window.resizeAfterClear();
-        stdout.println("Cleared!");              
+        if (DEBUG) {
+           stdout.println("Cleared!");              
+        }
     }
 
     function getSpanElementWithIcon(iconPath) {
